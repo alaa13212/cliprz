@@ -1,0 +1,195 @@
+<!--------------------------------------------
+----------------------------------------------
+- header
+----------------------------------------------
+--------------------------------------------->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>منصة كليبرز | مقدمة</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-responsive.css">
+<!--[if lt IE 9]>
+    <script src="../assets/javascript/html5shiv.js"></script>
+<![endif]-->
+<script type="text/javascript" src="../assets/javascript/jquery.js"></script>
+<script type="text/javascript" src="../assets/javascript/tipsy.js"></script>
+<script type="text/javascript" src="../assets/javascript/bootstrap.js"></script>
+
+<script type="text/javascript">
+     $.get('language.html', function(data) {
+       $('#language').html(data);
+     });           
+</script>
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a class="brand" href="">منصة كليبرز</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="../index.html">الرئيسية</a></li>
+                    <li class="active"><a href="index.html">التوثيق</a></li>
+                    <li><a href="http://www.cliprz.org">الموقع الرسمي</a></li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">تنزيل <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://github.com/Cliprz/cliprz/zipball/master">&lrm;.ZIP</a></li>
+                            <li><a href="https://github.com/Cliprz/cliprz/tarball/master">&lrm;.TAR</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">الكود المصدري</li>
+                            <li><a href="https://github.com/Cliprz/cliprz">المشروع على GitHub</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+               <div id="language"></div>
+
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+<!--------------------------------------------
+----------------------------------------------
+- /header
+----------------------------------------------
+--------------------------------------------->
+
+<div class="head-box">
+            <div class="head-body-box">
+            <h1>المقدمة</h1>
+            <hr>
+            لا تقلق فهذه التعليمات لن تجد بها صعوبة وهي سهلة للغاية يمكنك البدء من هنا .
+            <br>
+            </div>
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+		<div class="span12">
+		
+		<h2>مستلزمات منصة كليبرز</h2>
+		<hr>
+		<p>لا تقلق فأن مستلزمات تشغيل منصة كليبرز متوفرة ومجانية ايضاً, حتى تتمكن من تشغيل منصة كليبرز يتوجب توافر</p>
+		<ul>
+			<li>PHP الأصدار 5.3.0  وما أعلى</li>
+			<li>تمكين mod_rewrite من الخادم</li>
+			<li>وإذا كنت ستستخدم قاعدة بيانات فيفضل MySQL الإصدار 5.5.27</li>
+		</ul>
+		<p>نحن كمطورين نفضل استخدام خادم شخصي (السيرفر الشخصي) او كما يسمى Localhost للبدء بانشاء مشاريعك وتجربتها قبل الرفع على موقع رئيسي او رسمي حي , نحن نفضل الخادم <a target="_blank" href="http://www.apachefriends.org/en/xampp.html">Xampp</a> لانه يدعم phpmyadmin كما انه يدعم الكثير من المميزات التي يمكنك معرفتها عبر زيارتك لرابط <a target="_blank" href="http://www.apachefriends.org/en/faq-xampp.html">التالي</a> .</p>
+		
+		<br>
+		
+		<h2>الصفحة welcome</h2>
+		<hr>
+		<p>عند بدء تجربة منصة كليبرز على السيرفر الشخصي او الموقع الحي ستتمكن من رؤية الصفحة الترحيبية المسمى welcome وستشاهد ان الرابط يقوم بتوجيه إلى http://localhost/cliprz/welcome , تعتبر هذه الصفحة مجرد
+		صفحة ترحيبية ويمكنك تعديلها بأي وقت تريد, هذه الصفحة ما هي الا صفحة تجريبية لتأكد من ان المنصة عملت دون أخطاء فأن وجدت أخطاء PHP في صفحتك فهذا يعني ان منصة كليبرز غير ملائمة او بحاجة لاعادة النظر في أعدادت السيرفر الخاص بكم.</p>
+		
+		<br>
+		
+		<h2>مكونات MVC</h2>
+		<hr>
+		<p>أن اي إطار او منصة عمل تعتمد على نظام MVC المختصر من جملة Model View Controller ويمكنك قراءة المزيد عن هذه التقنية عبر زيارة ويكيبيديا من <a target="_blank" href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">هنا</a>, اي بمعنى
+		ان هذه الصفحة تعتمد على متحكم ويسمى controller وهو موجود على المسار : application/project/controllers/welcome.php , وهو عبارة عن ملف مسئول عن التحكم في كل ما يوجد بهذه الصفحة سواء عرض الملفات او جلب البيانات , وتسمى عملية عرض الملفات هنا بمسمى view وهذه الملفات
+		تكون موجودة في مجلد application/project/views/welcome.php , عادتاً المجلد المذكور application/project/views هو مجلد مسئول عن عرض ملفات HTML وهي تفصل البرمجة عن التصميم او المظهر , ومجلد application/project/controllers هو المسئول عن التحكم بها وعرضها على حسب ماتريد
+		كما لا ننسى ان في بعض الاحيان نحن بحاجة لعرض او جلب او طلب بيانات من خلال قواعد البيانات او ملفات XML او باي طريقة لتخزين او طلب هذه البيانات, ففي تلك الحالة تسمى هذه الملفات بأسم model وهي تحفظ في مجلد application/project/models , ان ما دون في هذه الفقرة هو توضيح لعملية MVC نرجوا بأن تكون
+		سهلة , ففي هذه الطريقة نحن وفرنا وفصلنا بناء المشروع على ثلاثة جهات التحكم بالمشروع واطلقنا عليه مسمى controller المتحكم , وعرض المظهر وهو عادتاً ما يكون HTML واطلقنا عليه view العرض, وجلب وعرض او طلب او تخزين البيانات واطلقنا عليه مسمى model .
+		</p>
+		
+		<br>
+		
+		<h2>المتحكم welcome</h2>
+		<hr>
+		<p>حتى تقوم بتعديل او تطوير المتحكمات فهي موجودة وتحفظ دائماً في مجلد application/project/controllers وفي هذه الفقرة سنتعلم ماهي محتويات المتحكم وسنتعلم على المتحكم welcome</p>
+		<p>سنبدء الآن بفتح المتحكم welcome.php الموجود في المسار application/project/controllers ستجد ان محتوى الملف عبارة عن كائن او كما نسميه كلاس Object or Class كما هو موضح ادناه :</p>
+		
+		<p>
+		<pre><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">welcome&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">cliprz&nbsp;</span><span style="color: #007700">{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">index&nbsp;</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></pre>
+		</p>
+		
+		<p>يبدو أن الملف صغير الشيفرة لكن ماتشاهده أعلاه عبارة كائن يرث صفات كائن آخر وهو الكائن cliprz, ان الكائن cliprz هو الكائن الرئيسي الذي يستطيع ان يصل الى كافة امتيازات وخصائض نظام منصة كليبرز, وسنتطرق إلى ذلك لاحقاً.</p>
+
+		<p>يتوجب ان تعرف ان اي متحكم controller تقوم بانشاءه يتوجب ان يكون تحت القوانين ادناه</p>
+		
+		<div class="alert alert-danger">
+		<h6>قوانين إنشاء متحكم جديد</h6>
+		<br>
+		<ul>
+			<li>أن يكون اسم الكائن مطابق لاسم الملف كمثال لو كان اسم المتحكم blog فيتوجب ان يكون الملف بأسم blog.php واسم الكائن blog.</li>
+			<li>أن اي متحكم يتوجب ان يحفظ في المجلد application/project/controllers فقط.</li>
+			<li>أن لايكون اسم المتحكم سوى بالحروف والارقام وعلامة _ فقط لاغير بحيث يوازي اسم الملف دون اخطاء وتكون باللغة الانجليزية كما لا يبدء برقم او _ وانما يبدء بحرف.</li>
+			<li>أن يرث الكائن خصائص المتحكم الرئيسي بالمنصة وهو الكائن cliprz</li>
+		</ul>
+		</div>
+		
+		<p>كما عرفنا اعلاه شروط إنشاء متحكم جديد يتوجب ان نكمل ونعرف ماهو مكتوب في هذه المتحكم, إذاً عرفنا ان المتحكم يرث صفات وخصائص المتحكم الرئيسي cliprz, الآن حان الوقت
+		لمعرفة الاسلوب او الوظيفة index الموضحة في هذه المتحكم welcome تعتبر index هي وظيفة لعرض ملف من مجلد application/project/views وهو ملف العرض welcome.php الموجود على المسار application/project/views/welcome.php وهو ملف HTML 
+		استخدمناه لعرض الصفحة التي تشاهدها في بداية تنصيب المنصة على سيرفرك فمن هنا نستنتج اننا قمنا بفصل التحكم عن العرض.</p>
+		
+		<p>نشاهد ايضاً الوظيفة display والتي ورثناها من المتحكم cliprz كما هو موضح ادناه :</p>
+		
+		<p>
+		<pre><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">index&nbsp;</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">);<br />}</span></pre>
+		</p>
+		
+		<p>الوظيفة display هي احد وظائف النظام المدرجة تحت الكائن view وهي تستخدم لعرض الملفات من مجلد application/project/views فا بمجرد كتابتك لاسم الملف من غير السابقة .php او المسار كاملاً تقوم بجلب ملف العرض welcome.php وهي بشكل تلقائي تقوم بالبحث عن الملف في المسار application/project/views فهذا وفر علينا وقت طلب الملف بالمسار يمكنك معرفة المزيد عبر زيارة <a href="views.html">العرض</a> وتعلم كيفية عرض الملفات .</p>
+		
+		<p>هكذا انت انهيت الاساسيات والمقدمة , يمكنك المتابعة والبدء بأنشاء اول مشروع لك عبر زيارة <a href="hello_world.html">اهلاً بالعالم</a></p>
+		
+		</div>
+
+    </div>
+
+</div>
+
+
+<!--------------------------------------------
+----------------------------------------------
+- footer
+----------------------------------------------
+--------------------------------------------->
+<hr>
+
+<footer>
+<div class="container">
+    <div class="row">
+            <div class="pull-left">
+                <a href="https://github.com/Cliprz/cliprz"><img src="../assets/images/glyphicons_401_github.png" alt="github" /></a>&nbsp;
+                <a href="http://www.youtube.com/cliprz"><img src="../assets/images/glyphicons_402_youtube.png" alt="youtube" /></a>&nbsp;
+                <a href="https://www.facebook.com/groups/cliprz.org/"><img src="../assets/images/glyphicons_410_facebook.png" alt="facebook" /></a>&nbsp;
+                <a href="http://www.twitter.com/cliprz"><img src="../assets/images/glyphicons_411_twitter.png" alt="twitter" /></a>
+            </div>
+            <div class="pull-right">
+                &copy; جميع الحقوق محفوظة لمطورين منصة كليبرز
+            </div>
+            <div class="clearfix"></div>
+    </div>
+</div>
+</footer>
+
+<br>
+
+
+</body>
+</html>
+<!--------------------------------------------
+----------------------------------------------
+- /footer
+----------------------------------------------
+--------------------------------------------->

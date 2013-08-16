@@ -6,7 +6,8 @@ body { padding-top: 60px; }
     .head-box .head-body-box { padding: 30px 00px 20px; }
 }
 
-pre {
+pre , code {
 	text-align:left;
 	direction: ltr;
 }
+

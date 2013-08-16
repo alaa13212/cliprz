@@ -20,7 +20,7 @@
 <script type="text/javascript" src="../assets/javascript/bootstrap.js"></script>
 
 <script type="text/javascript">
-     $.get('language.html', function(data) {
+     $.get('../language.html', function(data) {
        $('#language').html(data);
      });           
 </script>
@@ -106,9 +106,9 @@
 		<h2>مكونات MVC</h2>
 		<hr>
 		<p>أن اي إطار او منصة عمل تعتمد على نظام MVC المختصر من جملة Model View Controller ويمكنك قراءة المزيد عن هذه التقنية عبر زيارة ويكيبيديا من <a target="_blank" href="http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">هنا</a>, اي بمعنى
-		ان هذه الصفحة تعتمد على متحكم ويسمى controller وهو موجود على المسار : application/project/controllers/welcome.php , وهو عبارة عن ملف مسئول عن التحكم في كل ما يوجد بهذه الصفحة سواء عرض الملفات او جلب البيانات , وتسمى عملية عرض الملفات هنا بمسمى view وهذه الملفات
-		تكون موجودة في مجلد application/project/views/welcome.php , عادتاً المجلد المذكور application/project/views هو مجلد مسئول عن عرض ملفات HTML وهي تفصل البرمجة عن التصميم او المظهر , ومجلد application/project/controllers هو المسئول عن التحكم بها وعرضها على حسب ماتريد
-		كما لا ننسى ان في بعض الاحيان نحن بحاجة لعرض او جلب او طلب بيانات من خلال قواعد البيانات او ملفات XML او باي طريقة لتخزين او طلب هذه البيانات, ففي تلك الحالة تسمى هذه الملفات بأسم model وهي تحفظ في مجلد application/project/models , ان ما دون في هذه الفقرة هو توضيح لعملية MVC نرجوا بأن تكون
+		ان هذه الصفحة تعتمد على متحكم ويسمى controller وهو موجود على المسار : <code>application/project/controllers/welcome.php</code> , وهو عبارة عن ملف مسئول عن التحكم في كل ما يوجد بهذه الصفحة سواء عرض الملفات او جلب البيانات , وتسمى عملية عرض الملفات هنا بمسمى view وهذه الملفات
+		تكون موجودة في مجلد <code>application/project/views/welcome.php</code> , عادتاً المجلد المذكور <code>application/project/views</code> هو مجلد مسئول عن عرض ملفات HTML وهي تفصل البرمجة عن التصميم او المظهر , ومجلد <code>application/project/controllers</code> هو المسئول عن التحكم بها وعرضها على حسب ماتريد
+		كما لا ننسى ان في بعض الاحيان نحن بحاجة لعرض او جلب او طلب بيانات من خلال قواعد البيانات او ملفات XML او باي طريقة لتخزين او طلب هذه البيانات, ففي تلك الحالة تسمى هذه الملفات بأسم model وهي تحفظ في مجلد <code>application/project/models</code> , ان ما دون في هذه الفقرة هو توضيح لعملية MVC نرجوا بأن تكون
 		سهلة , ففي هذه الطريقة نحن وفرنا وفصلنا بناء المشروع على ثلاثة جهات التحكم بالمشروع واطلقنا عليه مسمى controller المتحكم , وعرض المظهر وهو عادتاً ما يكون HTML واطلقنا عليه view العرض, وجلب وعرض او طلب او تخزين البيانات واطلقنا عليه مسمى model .
 		</p>
 		
@@ -116,8 +116,8 @@
 		
 		<h2>المتحكم welcome</h2>
 		<hr>
-		<p>حتى تقوم بتعديل او تطوير المتحكمات فهي موجودة وتحفظ دائماً في مجلد application/project/controllers وفي هذه الفقرة سنتعلم ماهي محتويات المتحكم وسنتعلم على المتحكم welcome</p>
-		<p>سنبدء الآن بفتح المتحكم welcome.php الموجود في المسار application/project/controllers ستجد ان محتوى الملف عبارة عن كائن او كما نسميه كلاس Object or Class كما هو موضح ادناه :</p>
+		<p>حتى تقوم بتعديل او تطوير المتحكمات فهي موجودة وتحفظ دائماً في مجلد <code>application/project/controllers</code> وفي هذه الفقرة سنتعلم ماهي محتويات المتحكم وسنتعلم على المتحكم welcome</p>
+		<p>سنبدء الآن بفتح المتحكم welcome.php الموجود في المسار <code>application/project/controllers</code> ستجد ان محتوى الملف عبارة عن كائن او كما نسميه كلاس Object or Class كما هو موضح ادناه :</p>
 		
 		<p>
 		<pre><span style="color: #000000"><span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">welcome&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">cliprz&nbsp;</span><span style="color: #007700">{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">index&nbsp;</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span></span></pre>
@@ -132,14 +132,14 @@
 		<br>
 		<ul>
 			<li>أن يكون اسم الكائن مطابق لاسم الملف كمثال لو كان اسم المتحكم blog فيتوجب ان يكون الملف بأسم blog.php واسم الكائن blog.</li>
-			<li>أن اي متحكم يتوجب ان يحفظ في المجلد application/project/controllers فقط.</li>
+			<li>أن اي متحكم يتوجب ان يحفظ في المجلد <code>application/project/controllers</code> فقط.</li>
 			<li>أن لايكون اسم المتحكم سوى بالحروف والارقام وعلامة _ فقط لاغير بحيث يوازي اسم الملف دون اخطاء وتكون باللغة الانجليزية كما لا يبدء برقم او _ وانما يبدء بحرف.</li>
 			<li>أن يرث الكائن خصائص المتحكم الرئيسي بالمنصة وهو الكائن cliprz</li>
 		</ul>
 		</div>
 		
 		<p>كما عرفنا اعلاه شروط إنشاء متحكم جديد يتوجب ان نكمل ونعرف ماهو مكتوب في هذه المتحكم, إذاً عرفنا ان المتحكم يرث صفات وخصائص المتحكم الرئيسي cliprz, الآن حان الوقت
-		لمعرفة الاسلوب او الوظيفة index الموضحة في هذه المتحكم welcome تعتبر index هي وظيفة لعرض ملف من مجلد application/project/views وهو ملف العرض welcome.php الموجود على المسار application/project/views/welcome.php وهو ملف HTML 
+		لمعرفة الاسلوب او الوظيفة index الموضحة في هذه المتحكم welcome تعتبر index هي وظيفة لعرض ملف من مجلد <code>application/project/views</code> وهو ملف العرض welcome.php الموجود على المسار <code>application/project/views/welcome.php</code> وهو ملف HTML 
 		استخدمناه لعرض الصفحة التي تشاهدها في بداية تنصيب المنصة على سيرفرك فمن هنا نستنتج اننا قمنا بفصل التحكم عن العرض.</p>
 		
 		<p>نشاهد ايضاً الوظيفة display والتي ورثناها من المتحكم cliprz كما هو موضح ادناه :</p>
@@ -148,7 +148,7 @@
 		<pre><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">index&nbsp;</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'welcome'</span><span style="color: #007700">);<br />}</span></pre>
 		</p>
 		
-		<p>الوظيفة display هي احد وظائف النظام المدرجة تحت الكائن view وهي تستخدم لعرض الملفات من مجلد application/project/views فا بمجرد كتابتك لاسم الملف من غير السابقة .php او المسار كاملاً تقوم بجلب ملف العرض welcome.php وهي بشكل تلقائي تقوم بالبحث عن الملف في المسار application/project/views فهذا وفر علينا وقت طلب الملف بالمسار يمكنك معرفة المزيد عبر زيارة <a href="views.html">العرض</a> وتعلم كيفية عرض الملفات .</p>
+		<p>الوظيفة display هي احد وظائف النظام المدرجة تحت الكائن view وهي تستخدم لعرض الملفات من مجلد <code>application/project/views</code> فا بمجرد كتابتك لاسم الملف من غير السابقة .php او المسار كاملاً تقوم بجلب ملف العرض welcome.php وهي بشكل تلقائي تقوم بالبحث عن الملف في المسار application/project/views فهذا وفر علينا وقت طلب الملف بالمسار يمكنك معرفة المزيد عبر زيارة <a href="views.html">العرض</a> وتعلم كيفية عرض الملفات .</p>
 		
 		<p>هكذا انت انهيت الاساسيات والمقدمة , يمكنك المتابعة والبدء بأنشاء اول مشروع لك عبر زيارة <a href="hello_world.html">اهلاً بالعالم</a></p>
 		

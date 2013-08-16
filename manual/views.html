@@ -20,7 +20,7 @@
 <script type="text/javascript" src="../assets/javascript/bootstrap.js"></script>
 
 <script type="text/javascript">
-     $.get('language.html', function(data) {
+     $.get('../language.html', function(data) {
        $('#language').html(data);
      });           
 </script>
@@ -86,14 +86,96 @@
 		
 		<h2>العرض</h2>
 		<hr>
-		<p>هي احدى خصائص الكائن view والتي تقوم على عرض الملفات من مجلد <code>application/project/views</code> عادتاً تكون هذه الملفات عبارة عن مستندات HTML لاستخدام اسلوب العرض يتوجب ان تقوم بطلب الكائن view عن طريق :</p>
+		<p>هي احدى خصائص الكائن view والتي تقوم على عرض الملفات من مجلد <code>application/project/views</code> عادتاً تكون هذه الملفات عبارة عن مستندات HTML لاستخدام اسلوب العرض يتوجب ان تقوم بطلب الكائن <code>view</code> عن طريق :</p>
 
 		<p><pre><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">;</span></pre></p>
 		
-		<p>لعرض الملفات يمكنك استخدام الوظيفة display</p>
+		<p>لعرض الملفات يمكنك استخدام الوظيفة <code>display</code></p>
 		
 		<p><pre><span style="color: #000000"><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">();</span></span></pre></p>
 		
+		<br>
+		
+		<h2>التعليمات Parameters</h2>
+		<hr>
+		<p>
+		يتوجب ان تعرف ان الوظيفة <code>display</code> لها اربعة تعليمات
+		</p>
+		<ul>
+			<li><span class="badge badge-info">filename</span> اسم الملف المطلوب عرضه.</li>
+			<li><span class="badge badge-info">data</span> البيانات التي تود ادخالها إلى ملف العرض وهي على شكل مصفوفة مفهرسة index array.</li>
+			<li><span class="badge badge-info">use_cahce</span> وهي تأخذ قيمة تحققية اما <code>true</code> او <code>false</code> وهي لاستخدام الملفات المؤقتة.</li>
+			<li><span class="badge badge-info">cache_time</span> وهي مدة انتهاء الملف المؤقت بالثواني.</li>
+		</ul>
+		
+		<p>جميع التعليمات الموضحة اعلاه غير اجبارية وانما اول تعليمة <span class="badge badge-info">filename</span> هي اجبارية وهي اسم الملف وتأخذ اسم الملف لكن من غير السابقة .php وان كان الملف المطلوب بداخل مجلد يتوجب ان يطلب اسم المجلد كمسار وسنوضح ذلك ادناه.</p>
+		
+		<p>دائماً ملفات العرض تحفظ في <code>application/project/views</code> فمثلاً لو انشئنا ملف عرض بمسمى blog.php ووضعناه في مجلد العرض سينتج <code>application/project/views/blog.php</code> ولكي نقوم بطلبه سنقوم بكتابة الامر</p>
+		
+		<p><pre><span style="color: #000000"><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'blog'</span><span style="color: #007700">);</span></span></pre></p>
+		
+		<p>لو افترضنا اننا اردنا ان ننشئ مجلد بداخل المسار <code>application/project/views</code> واسميناه على سبيل المثال aboutus لينتج <code>application/project/views/aboutus</code> كيف سنقوم بطلب ملفات العرض منه ؟</p>
+		
+		<p>بكل سهولة الامر بسيط ! سيتم اضافة اسم المجلد إلى التعليمة <span class="badge badge-info">filename</span> كانه مسار, فالنفترض اننا انشئنا ملف عرض بأسم information.php لينتج <code>application/project/views/aboutus/information.php</code> سنقوم بطلبه وبكل سهولة بالطريقة ادناه :</p>
+
+		<p><pre><span style="color: #000000"><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'aboutus/information'</span><span style="color: #007700">);</span></span></pre></p>
+		
+		<p>إذاً الامر سهل جداً .</p>
+		
+		<br>
+		
+		<h2>أدخال البيانات</h2>
+		<hr>
+		<p>في بعض الاحيان تحتاج لادخال البيانات إلى ملف العرض على سبيل المثال لو اردنا ادخال اسم للصفحة يتم تغييره من المتحكم فكيف يتم ذلك ؟</p>
+		
+		<p>بكل سهولة سنستخدم التعليمة الثانية <span class="badge badge-info">data</span> وهي تعليمة مخصصة لادخال البيانات لملف العرض اذاً سنجرب ان ندخل بيانات لصفحة مثلاً اسم الصفحة فيمكنك ذلك عبر انشاء مصفوفة مفهرسة كمثال ستنشئ مصفوفة مفهرسة كأدناه :</p>
+
+		<p><pre><span style="color: #000000"><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;array(<br>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'page_title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;world'</span><span style="color: #007700"><br>);</span></span></pre></p>
+		
+		<p>لا بد ان تعرف ان المصفوفة المفهرسة في منصة كليبرز مهمة لادخال البيانات لملف العرض فأن الفهرسة <code>page_title</code> هي المفتاح الذي سيتسخدم بداخل ملف العرض بينما <code>Hello world</code> هي قيمة المفتاح والتي بناءاً عليه يتم عرضها في ملف العرض .</p>
+		
+		<p><pre><span style="color: #000000"><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'page_title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;world'<br /></span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'blog'</span><span style="color: #007700">,</span><span style="color: #0000BB">$foo</span><span style="color: #007700">);</span></span></pre></p>
+		
+		<p>المثال اعلاه يعني اننها ادخلنا المتغيير <code>foo</code> على انه بيانات ستدخل لملف العرض blog, اذاً الان سنتعلم كيفية عرض البيانات في ملف العرض blog, يتم ذلك عبر الفهرسة التي قمنا بها كما ذكرنا سلفاً ان الفهرسة ستدخل على شكل متغيرات فمثلاً الفهرسة <code>page_title</code> ستدخل في ملف العرض على انها متغيير كما موضح في المثال ادناه وهو مثال وهمي لملف blog الذي قمنا بادخال البيانات له :</p>
+		
+		<p><pre><span style="color: #000000">&lt;!DOCTYPE&nbsp;html&gt;<br />&lt;html&gt;<br />&lt;head&gt;<br />&lt;meta&nbsp;charset="utf-8"&gt;<br />&lt;title&gt;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$page_title</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;</span>&lt;/title&gt;<br />&lt;/head&gt;<br />&lt;body&gt;<br /><br />هذا هو الملف الذي قمنا بأدخاله&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$page_title</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span><br />&lt;/body&gt;<br />&lt;/html&gt;</span></pre></p>
+		
+		<p>دعونا الان ندخل بيانات كثيرة في ملف blog الوهمي</p>
+		
+		<p><pre><span style="color: #000000"><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'page_title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;world'<br />&nbsp;&nbsp;&nbsp;&nbsp;'page_content'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;my&nbsp;home&nbsp;page'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'my_email'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;my&nbsp;email&nbsp;cliprz@php.net'</span><span style="color: #007700">,<br />);<br /><br /></span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'blog'</span><span style="color: #007700">,</span><span style="color: #0000BB">$foo</span><span style="color: #007700">);</span></span></pre></p>
+	
+		<p>الان نبدء بعرض هذه البيانات في الملف الوهمي blog</p>
+	
+		<p><pre><span style="color: #000000">&lt;!DOCTYPE&nbsp;html&gt;<br />&lt;html&gt;<br />&lt;head&gt;<br />&lt;meta&nbsp;charset="utf-8"&gt;<br />&lt;title&gt;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$page_title</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;</span>&lt;/title&gt;<br />&lt;/head&gt;<br />&lt;body&gt;<br /><br /><span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$page_content</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">?&gt;<br /></span>&lt;br&gt;<br />Contact&nbsp;with&nbsp;me&nbsp;<span style="color: #0000BB">&lt;?php&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$my_email</span><span style="color: #007700">;</span><span style="color: #0000BB">?&gt;<br /></span><br />&lt;/body&gt;<br />&lt;/html&gt;</span></pre></p>
+	
+		<br>
+		
+		<h2>الملفات المؤقتة cache</h2>
+		<hr>
+		<p>تعتبر الملفات المؤقتة او ماتسمى بالكاش Cache هامة جداً لتسريع عملية ظهور الموقع ومما يميز الكائن <code>view</code> انه يعتمد على الكائن <code>cache</code> وهي ملفات مؤقتة تخزن لحفظ استهلاك وقت عرض الصفحات وعادتاً نستخدم الكاش للملفات التي ليست بحاجة إلى تحديث فمثلاً لو اردنا ان نقوم بعملية الكاش نقوم بتحويل قيمة التعليمة الثالثة <span class="badge badge-info">use_cahce</span> إلى <code>true</code></p>
+	
+		<p>في المثال ادناه سنقوم بعملية كاش لملفين عرض وهما ملفين header و footer كمثال لا الحصر</p>
+		
+		<p><pre><span style="color: #000000"><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'header'</span><span style="color: #007700">,</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'content'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'footer'</span><span style="color: #007700">,</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">true</span><span style="color: #007700">);</span></span></pre></p>
+	
+		<p>تقوم منصة كليبرز بحفظ الملفات المؤقتة في مجلد <code>application/cache/views</code> ويعتبر هذا المجلد المسئول عن كافة عمليات تخزين الملفات المؤقتة .</p>
+		<p>تقوم منصة كليبرز بتحديد اسماء المجلدات ان وجد فمثلاً لو تم انشاء ملف عرض اسميناه على سبيل المثال show وملف العرض هذا موجود بداخل مجلد في مسار العرض كمثال وكان اسمه blog سنحصل على <code>application/project/views/blog/show.php</code> ستقوم منصة كليبرز بانشاء مجلد جديد بمسمى هذا المجلد blog وستحفظه على المسار <code>application/cache/views/blog</code> ويتم حفظ جميع الملفات المؤقتة من هذا المجلد فيه .</p>
+		
+		<p>لا تقلق فأنت تستخدم منصة جميلة لكن نود ان نلفت انتباهك إلى ان كل الملفات المؤقتة تحفظ بصيغة html .</p>
+		<div class="alert alert-danger"><h5>تنيه هام </h5>يتوجب ان يكون مجلد <code>application/cache</code> ذو تصريح 0777 قابل للقراءة والكتابة للعمل دون اخطاء.</div>
+	
+		<br>
+		
+		<h2>توقيت الملفات المؤقتة</h2>
+		<hr>
+		<p>افتراضياً الملفات المؤقتة تحفظ لمدة 5 دقائق يمكنك تغييرها من ملف <code>application/config/config.php</code> ابحث عن <code>'cache_time'</code> يمكنك قراءة <a href="config.html">التكوين</a> لمعرفة المزيد عن هذا الملف ,. وقم بتغييرها, لكن لاتنسى انه يمكنك تغييرها من التعليمة الرابعة <span class="badge badge-info">cahce_time</span> كمثال :</p>
+		
+		<p><pre><span style="color: #000000"><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'header'</span><span style="color: #007700">,</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">true</span><span style="color: #007700">,</span><span style="color: #0000BB">60</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'content'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">view</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">display</span><span style="color: #007700">(</span><span style="color: #DD0000">'footer'</span><span style="color: #007700">,</span><span style="color: #0000BB">null</span><span style="color: #007700">,</span><span style="color: #0000BB">true</span><span style="color: #007700">,</span><span style="color: #0000BB">60</span><span style="color: #007700">);</span></span></pre></p>
+		
+		<p>في المثال اعلاه الملفات المؤقتة ستحفظ خلال 60 ثانية فقط, ويمكنك تغييرها حسب الحاجة .</p>
+
+		
+	
 		</div>
 
     </div>

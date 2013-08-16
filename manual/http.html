@@ -84,8 +84,70 @@
 
 		<div class="span12">
 		
-		لم يكتمل التوثيق
+		<h2>ماهو HTTP</h2>
+		<hr>
+		<p>يعتبر الكائن <code>http</code> هو كائن مسئول عن عرض وجلب وتخزين بيانات Hypertext Transfer Protocol , حيث يمكنك معرفة المزيد عن HTTP عبر زيارة ويكيبيديا من <a target="_blank" href="http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol">هنا</a>,
+		من مميزات هذا الكائن معرفة بعض المعلومات الاساسية عن المستخدم او زائر موقعك كمثال لا الحصر ( عنوان IP - معلومات المتصفح - نوع نظام التشغيل ) .. ألخ
+		ويمكنك معرفة المزيد عن هذا الكائن ادناه .</p>
+		
+		<br>
+		
+		<h2>استخدام الكائن</h2>
+		<hr>
+		<p>لاستخدام الكائن <code>http</code> يمكنك طلبه بشكل ادناه :</p>
+		
+		<p><pre><span style="color: #000000"><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">http</span><span style="color: #007700">;</span></span></pre></p>
+		
+		<br>
+		
+		<h2>معلومات الزائر ( المستخدم )</h2>
+		<hr>
+		<p>لمعرفة بيانات الزائر يمكنك طلب المتغيير <code>user</code> , وهو متغيير يقوم بحفظ بيانات الزائر بشكل تلقائي بمجرد دخوله إلى الموقع الالكتروني الخاص بك,
+		ان المتغيير <code>user</code> هو متغيير ذو صفة مصفوفة مفهرسة index array يحتوي على الفهارس ادناه :</p>
+		
+		<ul>
+			<li><span class="label label-success">browser</span> اسم المتصفح</li>
+			<li><span class="label label-success">platform</span> اسم نظام التشغيل</li>
+			<li><span class="label label-success">robot</span> اسم الروبوت كمثال GoogleBot وتكون قيمة هذه الفهرسة خالية في حال لم روبوت او عنكبوت</li>
+			<li><span class="label label-success">is_robot</span> وهي فهرسة تأخذ قيمة <code>true</code> ان كان روبوت او عنكبوت آلي <code>false</code> ان لم يكن</li>
+			<li><span class="label label-success">mobile</span> وهي فهرسة خالية الا ان كان الزائر يتصفح الموقع من جهاز متنقل ( الاجهزة الذكية مثلاً كأيفون - ايباد - جلاكسي .. ألخ )</li>
+			<li><span class="label label-success">is_mobile</span> وهي فهرسة تأخذ قيمة <code>true</code> ان كان الزائر يتصفح من جهاز متنقل و <code>false</code> ان لم يكن</li>
+			<li><span class="label label-success">version</span> وهي فهرسة خاصة لرقم اصدار المتصفح</li>
+			<li><span class="label label-success">language</span> وهي اللغات المستخدمة والمدعومة بالمتصفح</li>
+			<li><span class="label label-success">agent</span> وهو بيانات العميل ( الزائر ) كاملة كنص واحد</li>
+			<li><span class="label label-success">ip</span> وهو عنوان IP ويمكنك معرفة المزيد حول IP عبر زيارة ويكيبيديا من <a target="_blank" href="http://en.wikipedia.org/wiki/IP_address">هنا</a></li>
+		</ul>
+		
+		<p>حتى تتمكن من جلب هذه البيانات يمكنك عرضها عن طريقة وظيفة <code>print_r</code> او الوظيفة الخاصة بالمنصة <code>pre_print_r</code> كمثال ادناه :</p>
 
+		<p><pre><span style="color: #000000"><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">http</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">user</span><span style="color: #007700">);</span></span></pre></p>
+		
+		<p>ولطلب معين كمثال لنوع المتصفح يمكنك الطلب كأدناه :</p>
+		
+		<p><pre><span style="color: #000000"><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">http</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">user</span><span style="color: #007700">[</span><span style="color: #DD0000">'browser'</span><span style="color: #007700">];</span></span></pre></p>
+		
+		<p>وهناك طرق كثيرة للاستخدامات اعلاه فمثلاً لو اردت ان تتحقق من ان المستخدم هل هو عنكبوت او روبوت وتريد وضع شروط له يمكنك ذلك كالمثال ادناه لا الحصر :</p>
+		
+		<p><pre><span style="color: #000000"><span style="color: #0000BB"></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">http</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">user</span><span style="color: #007700">[</span><span style="color: #DD0000">'is_robot'</span><span style="color: #007700">]&nbsp;==&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Its&nbsp;a&nbsp;robot&nbsp;from&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">http</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">user</span><span style="color: #007700">[</span><span style="color: #DD0000">'robot'</span><span style="color: #007700">];<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Do&nbsp;somthing<br /></span><span style="color: #007700">}</span></span></pre></p>
+		
+		<br>
+		
+		<h2>اضافة\تعديل في البيانات</h2>
+		<hr>
+		
+		<p>يمكنك الذهاب إلى المسار <code>application/config/http</code> ستجد أربع ملفات بها مصفوفات خاصة للمعلومات يمكنك اضافة او تعديل او حذف اي معلومات, الملفات ادناه مشروحه :</p>
+		
+		<ul>
+			<li>browsers.php مخصص لاسماء المتصفحات</li>
+			<li>mobiles.php مخصص لاسماء الاجهزة المتنقلة والذكية</li>
+			<li>robots.php مخصص لاسماء العناكب والروبوتات</li>
+			<li>platforms.php مخصص لاسماء المنصات وانظمة التشغيل</li>
+		</ul>
+		
+		<br>
+		
+		<p class="alert">أن الكائن <code>http</code> سيتم تطويره بالمستقبل ليكون اكثر مرونة ذو مميزات اكبر مستقبلاً لكن مادون اعلاه هو اساس ثابت به ماسيتم اضافته لا يعني حذف ماذكر اعلاه .</p>
+		
 		</div>
 
     </div>
